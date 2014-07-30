@@ -4,4 +4,5 @@ ev pusham ovo da testiram a projektna struktura nam je malo pobrkana imamo proje
 btw nek stoji default layout da je starno ne commitamo i pushamo i pullamo i idk.. postavi default i da se ne mjenja :)
 
 
-//konekcija zeza nesto, ja u varvari pa se nakacio, eto prototip.. nije upload sve sto imam nesto se cudno desava 
+//konekcija zeza nesto, ja u varvari pa se nakacio, eto prototip.. nije upload sve sto imam nesto se cudno desava
+// ok ono je radi gitignore valjda, uglavnom radi normalno i kad se pokren projekt ne pravi viska commite
