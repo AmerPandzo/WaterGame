@@ -2,29 +2,48 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour {
+public class MenuManager : MonoBehaviour
+{
+    [Header("Canvases")]
+    public Canvas MainCanvas;
+    public Canvas FacebookCanvas;
 
-    [Header("UI Components")]
+    [Header("Main Canvas Components")]
     public Button playButton;
     public Button quitButton;
+    public Button facebbookButton;
+
+    [Header("Facebook Canvas Components")]
+    public Button backButton;
 
     void Awake()
     {
-        playButton.onClick.AddListener(Play);
-        quitButton.onClick.AddListener(Quit);
+        playButton.onClick.AddListener(PlayClicked);
+        quitButton.onClick.AddListener(QuickClicked);
+
+        facebbookButton.onClick.AddListener(ToggleCanvas);
+        backButton.onClick.AddListener(ToggleCanvas);
     }
 
-    private void Play()
+    private void ToggleCanvas()
+    {
+        MainCanvas.enabled = !MainCanvas.enabled;
+        MainCanvas.GetComponent<GraphicRaycaster>().enabled = MainCanvas.enabled;
+        FacebookCanvas.enabled = !FacebookCanvas.enabled;
+        FacebookCanvas.GetComponent<GraphicRaycaster>().enabled = FacebookCanvas.enabled;
+    }
+
+    private void PlayClicked()
     {
         SceneManager.LoadScene(1);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) Quit();
+        if (Input.GetKeyDown(KeyCode.Escape)) QuickClicked();
     }
 
-    private void Quit()
+    private void QuickClicked()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
