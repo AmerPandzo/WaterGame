@@ -2,9 +2,11 @@
 
 public class GravityInput : MonoBehaviour
 {
-    enum Sensors { None, Accelerometar, Gyroscope, Fusion }
-
-    private Sensors activeSensors;
+    public Rigidbody[] affectedBodies;
+    public enum Sensors { None, Accelerometar, Gyroscope, Fusion }
+    public Sensors activeSensors;
+    public Vector3 gravity;
+    public float gravityMagnitude = 5f;
 
     void Awake()
     {
@@ -26,19 +28,28 @@ public class GravityInput : MonoBehaviour
         }
     }
 
+    private Vector3 tempGravity;
     void FixedUpdate()
     {
         switch (activeSensors)
         {
             case Sensors.Accelerometar:
-                Physics.gravity = Input.acceleration;
+                tempGravity = Input.acceleration;
                 break;
             case Sensors.Gyroscope:
-                Physics.gravity = Input.gyro.userAcceleration;
+                tempGravity = Input.gyro.userAcceleration;
                 break;
             case Sensors.Fusion:
-                Physics.gravity = (Input.gyro.userAcceleration + Input.acceleration) / 2;
+                tempGravity = (Input.gyro.userAcceleration + Input.acceleration) / 2;
                 break;
+        }
+
+        gravity = tempGravity * gravityMagnitude;
+        //Physics.gravity = gravity;
+
+        foreach (var item in affectedBodies)
+        {
+            item.AddForce(gravity, ForceMode.Force);
         }
     }
 }
