@@ -12,8 +12,7 @@ public class ApplyForce : MonoBehaviour
         {
             if (other.attachedRigidbody)
             {
-                Debug.Log("Force applied.");
-                other.attachedRigidbody.AddForce(gameObject.transform.up * forceMagnitude);
+                other.attachedRigidbody.AddForce(gameObject.transform.up * forceMagnitude * Time.deltaTime);
             }
         }
     }
