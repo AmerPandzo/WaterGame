@@ -2,7 +2,6 @@
 
 public class GravityInput : MonoBehaviour
 {
-    public Rigidbody[] affectedBodies;
     public enum Sensors { None, Accelerometar, Gyroscope, Fusion }
     public Sensors activeSensors;
     public Vector3 gravity;
@@ -45,11 +44,6 @@ public class GravityInput : MonoBehaviour
         }
 
         gravity = tempGravity * gravityMagnitude;
-        //Physics.gravity = gravity;
-
-        foreach (var item in affectedBodies)
-        {
-            item.AddForce(gravity, ForceMode.Force);
-        }
+        Physics.gravity = gravity;
     }
 }

@@ -10,12 +10,12 @@ public class ButtonHelper : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void OnPointerDown(PointerEventData eventData)
     {
         OnPointerDownAction();
-        Debug.Log(gameObject.name + " Was Pressed.");
+        //Debug.Log(gameObject.name + " Was Pressed.");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         OnPointerUpAction();
-        Debug.Log(gameObject.name + " Was Released.");
+        //Debug.Log(gameObject.name + " Was Released.");
     }
 }

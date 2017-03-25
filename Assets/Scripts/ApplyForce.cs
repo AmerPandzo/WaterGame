@@ -5,6 +5,12 @@ public class ApplyForce : MonoBehaviour
     public float forceMagnitude = 1f;
 
     private bool isActive = false;
+    private Vector3 up;
+
+    void Awake()
+    {
+        up = gameObject.transform.up;
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -12,7 +18,7 @@ public class ApplyForce : MonoBehaviour
         {
             if (other.attachedRigidbody)
             {
-                other.attachedRigidbody.AddForce(gameObject.transform.up * forceMagnitude * Time.deltaTime);
+                other.attachedRigidbody.AddForce(up * forceMagnitude);
             }
         }
     }
