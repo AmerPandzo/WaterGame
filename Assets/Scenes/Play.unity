@@ -146,10 +146,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &115002766 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 115002765}
+--- !u!65 &115002767
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115002766}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &160502523
 Prefab:
   m_ObjectHideFlags: 0
@@ -205,10 +227,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &160502524 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 160502523}
+--- !u!65 &160502525
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160502524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &161680892
 Prefab:
   m_ObjectHideFlags: 0
@@ -264,10 +308,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &161680893 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 161680892}
+--- !u!65 &161680894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161680893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &223450271
 Prefab:
   m_ObjectHideFlags: 0
@@ -385,10 +451,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &423810717 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 423810716}
+--- !u!65 &423810718
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 423810717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &458191943
 Prefab:
   m_ObjectHideFlags: 0
@@ -444,10 +532,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &458191944 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 458191943}
+--- !u!65 &458191945
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 458191944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &486788128
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,20 +796,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4219279712695500, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4768556001078730, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &748075374
@@ -979,10 +1076,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1177869687 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1177869686}
+--- !u!65 &1177869688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1177869687}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1263227716
 Prefab:
   m_ObjectHideFlags: 0
@@ -1326,10 +1445,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1509363938 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1509363937}
+--- !u!65 &1509363939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1509363938}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1579569729 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1300567747169878, guid: be561070f00c968498e92e67bb566398,
@@ -1477,10 +1618,32 @@ Prefab:
       propertyPath: m_Name
       value: Torus (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1763487444 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1763487443}
+--- !u!65 &1763487445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763487444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1882095786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,7 +1826,29 @@ Prefab:
       propertyPath: m_Name
       value: Torus (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4909373306414658, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114975156326054058, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2019342994 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356239277956170, guid: d5b023a3b88ae5f4d859a5a662aa777d,
+    type: 2}
+  m_PrefabInternal: {fileID: 2019342993}
+--- !u!65 &2019342995
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2019342994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}

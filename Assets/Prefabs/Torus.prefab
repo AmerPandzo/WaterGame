@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4909373306414658}
-  - component: {fileID: 135782070819734720}
+  - component: {fileID: 65696043127569508}
   m_Layer: 8
   m_Name: Force
   m_TagString: Untagged
@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 4219279712695500}
   - component: {fileID: 33032652916486180}
   - component: {fileID: 23514353414819254}
-  - component: {fileID: 114975156326054058}
   m_Layer: 0
   m_Name: HalfTorus
   m_TagString: Untagged
@@ -232,7 +231,7 @@ Transform:
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 4843663652140110}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!4 &4520614615590318
 Transform:
@@ -336,7 +335,7 @@ Transform:
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 4843663652140110}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4841006158849546
 Transform:
@@ -362,9 +361,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4994892311117820}
+  - {fileID: 4909373306414658}
   - {fileID: 4768556001078730}
   - {fileID: 4219279712695500}
-  - {fileID: 4909373306414658}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -379,7 +378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4843663652140110}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4994892311117820
 Transform:
@@ -577,6 +576,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.005, y: 0.01, z: 0.005}
   m_Center: {x: -0.01, y: 0, z: 0}
+--- !u!65 &65696043127569508
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356239277956170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.25, z: 0.25}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65818142523628158
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -589,29 +600,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.005, y: 0.005, z: 0.005}
   m_Center: {x: -0.01, y: 0, z: 0}
---- !u!114 &114975156326054058
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1599183254226206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2bd7d323b3db2d4587753fce5690861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldMerge: 1
-  createColliderChildGameObject: 1
-  boxesPerEdge: 3
---- !u!135 &135782070819734720
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356239277956170}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.63
-  m_Center: {x: 0, y: 0, z: 0}
