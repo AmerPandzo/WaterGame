@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PlayManager : MonoBehaviour
 {
     [Header("UI Components")]
-    public Button backButton;
+    public Button backButton; // GameController
     public Button leftPushButton;
     public Button rightPushButton;
-    public Slider leftPushSlider;
-    public Slider rightPushSlider;
+    [HideInInspector] public Slider leftPushSlider;
+    [HideInInspector] public Slider rightPushSlider;
 
     [Header("GameObject Pushers")]
     public GameObject leftPusher;
@@ -20,10 +19,8 @@ public class PlayManager : MonoBehaviour
     private ApplyForce leftForce;
     private ApplyForce rightForce;
 
-    void Awake()
+    private void Awake()
     {
-        backButton.onClick.AddListener(Back);
-
         leftPushSlider = leftPushButton.gameObject.GetComponentInChildren<Slider>();
         rightPushSlider = rightPushButton.gameObject.GetComponentInChildren<Slider>();
 
@@ -43,19 +40,9 @@ public class PlayManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) Back();
-    }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         leftPushSlider.value = leftForce.currentForceMagnitude;
         rightPushSlider.value = rightForce.currentForceMagnitude;
-    }
-
-    private void Back()
-    {
-        SceneManager.LoadScene(0);
     }
 }
