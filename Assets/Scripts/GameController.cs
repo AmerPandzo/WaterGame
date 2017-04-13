@@ -5,6 +5,9 @@ using System.Collections;
 
 public class GameController : MonoBehaviour
 {
+    public enum Difficulty { Easy, Hard };
+    public enum Mode { Normal, Time, Water };
+
     // SceneManagers
     private PlayManager playManager;
     private MenuManager menuManager;
@@ -14,6 +17,12 @@ public class GameController : MonoBehaviour
 
     private Slider loadingBarSlider;
     private Canvas loadingBarCanvas;
+
+    private Difficulty difficulty;
+    private Mode mode;
+
+    public GameObject[] loopPrefabs;
+    private int[] loopPrefabIds;
 
     private void Awake()
     {
@@ -46,6 +55,9 @@ public class GameController : MonoBehaviour
     {
         playManager = FindObjectOfType<PlayManager>();
         playManager.backButton.onClick.AddListener(() => StartLoading("Menu"));
+
+        // TODO - set these informations from menu
+        playManager.ReadyUpState(loopPrefabs[0], 10, Mode.Normal, Difficulty.Easy);
     }
 
     private void SetMenuScene()

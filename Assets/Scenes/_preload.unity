@@ -370,6 +370,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa133f736f279d439c1e6ac8bf68138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loopPrefabs:
+  - {fileID: 1185370774334024, guid: 947540d4d93bcab42949ecc28d5b451f, type: 2}
+  - {fileID: 1185370774334024, guid: 90270a33cdc2c9743819d30d99bd38a6, type: 2}
+  - {fileID: 1185370774334024, guid: 135c42a9b1a946b468d455448599c78c, type: 2}
+  - {fileID: 1185370774334024, guid: d5b023a3b88ae5f4d859a5a662aa777d, type: 2}
+  - {fileID: 1185370774334024, guid: 3850c2be16d40b4438b2d876cdf4fbbc, type: 2}
 --- !u!114 &913816283
 MonoBehaviour:
   m_ObjectHideFlags: 0
