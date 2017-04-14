@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
         playManager.backButton.onClick.AddListener(() => StartLoading("Menu"));
 
         // TODO - set these informations from menu
-        playManager.ReadyUpState(loopPrefabs[0], 10, Mode.Normal, Difficulty.Easy);
+        playManager.ReadyUpState(loopPrefabs[3], 10, Mode.Normal, Difficulty.Easy);
     }
 
     private void SetMenuScene()
@@ -82,7 +82,6 @@ public class GameController : MonoBehaviour
     {
         loadingBarCanvas.gameObject.SetActive(true);
         StartCoroutine(LoadSceneAsync(sceneToLoad));
-        loadingBarCanvas.gameObject.SetActive(false);
     }
 
     public IEnumerator LoadSceneAsync(string sceneToLoad)
@@ -93,6 +92,7 @@ public class GameController : MonoBehaviour
             loadingBarSlider.value = asyncOperation.progress;
             yield return null;
         }
+        loadingBarCanvas.gameObject.SetActive(false);
     }
 
     private void Quit()

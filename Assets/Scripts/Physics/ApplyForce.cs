@@ -2,15 +2,16 @@
 
 public class ApplyForce : MonoBehaviour
 {
-    public float maxForceMagnitude = 1f;
-    public float minForceMagnitude = 0.1f;
+    public float ForceMagnitude = 1f;
+    [Range(0,1)]
+    public float minForceMagnitudePercentage = 0.1f;
     public float maxHoldDuration = 2f;
 
     private Vector3 up;
     void Awake()
     {
         up = gameObject.transform.up;
-        currentForceMagnitude = maxForceMagnitude;
+        currentForceMagnitude = ForceMagnitude;
     }
 
     public float currentForceMagnitude;
@@ -46,8 +47,8 @@ public class ApplyForce : MonoBehaviour
     private float CalculateForce(float holdDuration)
     {
         float inverseForceToHoldDurtion = (holdDuration - maxHoldDuration) / (-maxHoldDuration);
-        float force = inverseForceToHoldDurtion <= 0 ? minForceMagnitude : inverseForceToHoldDurtion;
-        return force * maxForceMagnitude;
+        float force = inverseForceToHoldDurtion <= 0 ? minForceMagnitudePercentage : inverseForceToHoldDurtion;
+        return force * ForceMagnitude;
     }
 
     public void Toggle()

@@ -1,46 +1,64 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PoolObject : MonoBehaviour
 {
-    private bool isDisappearing;
-    private float disappearTimer;
-    private float entertime;
-    public event Action OnTimerPassed;
-    public event Action OnEntering;
-    public event Action OnExiting;
+    public LoopBehaviour loopBehaviour;
 
+    private float timer;
+    private float layerId;
+
+    private void Awake()
+    {
+        layerId = LayerMask.NameToLayer("Disappear");
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == layerId)
+        {
+            timer += Time.deltaTime;
+            if (timer >= loopBehaviour.disappearTimer)
+            {
+                Destroy();
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.layer != 5)
-        if (OnEntering != null) OnEntering();
-        entertime = Time.time;
+        if (other.gameObject.layer == layerId)
+        {
+            if (loopBehaviour.OnEntering != null) loopBehaviour.OnEntering();
+            ResetTimer();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //if (other.gameObject.layer != 5)
-        if (OnExiting != null) OnExiting();
-        if ((Time.time - entertime) > disappearTimer)
+        if (other.gameObject.layer == layerId)
         {
-            Destroy();
+            if (loopBehaviour.OnExiting != null) loopBehaviour.OnExiting();
         }
+    }
+
+    private void ResetTimer()
+    {
+        timer = 0;
     }
 
     public virtual void OnObjectReuse()
     {
-        entertime = 0;
-    }
-
-    public void SetPoolObjectBehavoiur(float disappearTimer, bool isDisappearing)
-    {
-        this.disappearTimer = disappearTimer;
-        this.isDisappearing = isDisappearing;
+        ResetTimer();
     }
 
     protected void Destroy()
     {
-        if (OnTimerPassed != null) OnTimerPassed();
-        if (isDisappearing) gameObject.SetActive(false);
+        if (loopBehaviour.OnTimerPassed != null)
+        {
+            loopBehaviour.OnTimerPassed();
+        }
+        if (loopBehaviour.isDisappearing)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

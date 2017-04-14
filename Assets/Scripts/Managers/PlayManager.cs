@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,8 @@ public class PlayManager : MonoBehaviour
 
     //public WaterLeak waterleak;
     private PoolManager poolManager;
+    public Transform[] spawnPositions;
+    private Queue<Transform> spawningQueue;
 
     [Header("Gamestate")]
     public int countFrom = 3;
@@ -42,6 +45,7 @@ public class PlayManager : MonoBehaviour
     public int numberToScore; // Normal mode
     public float endTime = 60f; // Time and Water modes
     public float timeBonus = 10f; // Time and Water mode time bonus
+    public LoopBehaviour loopBehavior;
     private float score;
     private float disappearCounter;
     private float startTime;
@@ -50,6 +54,7 @@ public class PlayManager : MonoBehaviour
     private void Awake()
     {
         poolManager = GetComponent<PoolManager>();
+        spawningQueue = new Queue<Transform>();
 
         leftPushSlider = leftPushButton.gameObject.GetComponentInChildren<Slider>();
         rightPushSlider = rightPushButton.gameObject.GetComponentInChildren<Slider>();
@@ -57,8 +62,8 @@ public class PlayManager : MonoBehaviour
         leftForce = leftPusher.GetComponentInChildren<ApplyForce>();
         rightForce = rightPusher.GetComponentInChildren<ApplyForce>();
 
-        leftPushSlider.maxValue = leftForce.maxForceMagnitude;
-        rightPushSlider.maxValue = rightForce.maxForceMagnitude;
+        leftPushSlider.maxValue = leftForce.ForceMagnitude;
+        rightPushSlider.maxValue = rightForce.ForceMagnitude;
 
         leftPushHelper = leftPushButton.GetComponent<ButtonHelper>();
         rightPushHelper = rightPushButton.GetComponent<ButtonHelper>();
@@ -68,7 +73,10 @@ public class PlayManager : MonoBehaviour
         rightPushHelper.OnPointerDownAction += rightForce.Toggle;
         rightPushHelper.OnPointerUpAction += rightForce.Toggle;
 
-        OnGameStart += Start;
+        OnGameStart += StartGame;
+
+        // TODO - GameOver, Pause
+        OnGameOver += () => { Debug.Log("OnGameOver event triggered."); isPlaying = false; };
     }
 
     public void ReadyUpState(GameObject prefab, int poolSize, GameController.Mode mode, GameController.Difficulty difficulty)
@@ -79,22 +87,26 @@ public class PlayManager : MonoBehaviour
         this.poolSize = poolSize;
         numberToScore = poolSize;
 
+        for (int i = 0; i < spawnPositions.Length; i++)
+        {
+            spawningQueue.Enqueue(spawnPositions[i]);
+        }
+
         isPlaying = false;
         InitGame();
         StartCountdown();
     }
 
-    // TODO - work out instantiating objects with positions, rotations
-
     private void InitGame()
     {
+        loopBehavior.disappearTimer = disappearTimer;
         switch (mode)
         {
             case GameController.Mode.Normal:
                 if (difficulty == GameController.Difficulty.Easy)
                 {
-                    prefab.GetComponent<PoolObject>().SetPoolObjectBehavoiur(disappearTimer, true);
-                    prefab.GetComponent<PoolObject>().OnTimerPassed += () => 
+                    loopBehavior.isDisappearing = true;
+                    loopBehavior.OnTimerPassed += () =>
                     {
                         disappearCounter++;
                         scoreText.text = disappearCounter.ToString();
@@ -103,13 +115,13 @@ public class PlayManager : MonoBehaviour
                 }
                 else
                 {
-                    prefab.GetComponent<PoolObject>().SetPoolObjectBehavoiur(disappearTimer, false);
-                    prefab.GetComponent<PoolObject>().OnEntering += () =>
+                    loopBehavior.isDisappearing = false;
+                    loopBehavior.OnEntering += () =>
                     {
                         disappearCounter++;
                         scoreText.text = disappearCounter.ToString();
                     };
-                    prefab.GetComponent<PoolObject>().OnExiting += () =>
+                    loopBehavior.OnExiting += () =>
                     {
                         disappearCounter--;
                         scoreText.text = disappearCounter.ToString();
@@ -120,26 +132,24 @@ public class PlayManager : MonoBehaviour
             case GameController.Mode.Time:
                 if (difficulty == GameController.Difficulty.Easy)
                 {
-                    prefab.GetComponent<PoolObject>().SetPoolObjectBehavoiur(disappearTimer, true);
-                    prefab.GetComponent<PoolObject>().OnTimerPassed += () =>
+                    loopBehavior.isDisappearing = true;
+                    loopBehavior.OnTimerPassed += () =>
                     {
                         endTime += timeBonus;
                         disappearCounter++;
                         scoreText.text = disappearCounter.ToString();
-                        // TODO - spawning position and rotation of new objects
-                        //poolManager.ReuseObject(prefab); 
+                        poolManager.ReuseObject(prefab, GetSpawnPosition(), UnityEngine.Random.rotation);
                     };
                     Debug.Log("Time easy started.");
                 }
                 else
                 {
-                    prefab.GetComponent<PoolObject>().SetPoolObjectBehavoiur(disappearTimer, true);
-                    prefab.GetComponent<PoolObject>().OnTimerPassed += () =>
+                    loopBehavior.isDisappearing = true;
+                    loopBehavior.OnTimerPassed += () =>
                     {
                         disappearCounter++;
                         scoreText.text = disappearCounter.ToString();
-                        // TODO - spawning position and rotation of new objects
-                        //poolManager.ReuseObject(prefab); 
+                        poolManager.ReuseObject(prefab, GetSpawnPosition(), UnityEngine.Random.rotation);
                     };
                     Debug.Log("Time hard started.");
                 }
@@ -147,26 +157,24 @@ public class PlayManager : MonoBehaviour
             case GameController.Mode.Water:
                 if (difficulty == GameController.Difficulty.Easy)
                 {
-                    prefab.GetComponent<PoolObject>().SetPoolObjectBehavoiur(disappearTimer, true);
-                    prefab.GetComponent<PoolObject>().OnTimerPassed += () =>
+                    loopBehavior.isDisappearing = true;
+                    loopBehavior.OnTimerPassed += () =>
                     {
                         endTime += timeBonus;
                         disappearCounter++;
                         scoreText.text = disappearCounter.ToString();
-                        // TODO - spawning position and rotation of new objects
-                        //poolManager.ReuseObject(prefab); 
+                        poolManager.ReuseObject(prefab, GetSpawnPosition(), UnityEngine.Random.rotation);
                     };
                     Debug.Log("Water easy started.");
                 }
                 else
                 {
-                    prefab.GetComponent<PoolObject>().SetPoolObjectBehavoiur(disappearTimer, true);
-                    prefab.GetComponent<PoolObject>().OnTimerPassed += () =>
+                    loopBehavior.isDisappearing = true;
+                    loopBehavior.OnTimerPassed += () =>
                     {
                         disappearCounter++;
                         scoreText.text = disappearCounter.ToString();
-                        // TODO - spawning position and rotation of new objects
-                        //poolManager.ReuseObject(prefab); 
+                        poolManager.ReuseObject(prefab, GetSpawnPosition(), UnityEngine.Random.rotation);
                     };
                     Debug.Log("Water hard started.");
                 }
@@ -174,10 +182,22 @@ public class PlayManager : MonoBehaviour
         }
     }
 
-    public void Start()
+    public void StartGame()
     {
         poolManager.CreatePool(prefab, poolSize);
+        for (int i = 0; i < poolSize; i++)
+        {
+            poolManager.ReuseObject(prefab, GetSpawnPosition(), UnityEngine.Random.rotation);
+        }
         startTime = Time.time;
+        isPlaying = true;
+    }
+
+    private Vector3 GetSpawnPosition()
+    {
+        Transform transform = spawningQueue.Dequeue();
+        spawningQueue.Enqueue(transform);
+        return transform.position;
     }
 
     public void StartCountdown()
@@ -189,6 +209,7 @@ public class PlayManager : MonoBehaviour
     private IEnumerator CountdownSecondsFrom(int time)
     {
         countdownText.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(false);
         while (time > 0)
         {
             countdownText.text = time.ToString();
@@ -196,29 +217,33 @@ public class PlayManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
         }
         countdownText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(true);
         if (OnGameStart != null) OnGameStart();
     }
 
     private void Update()
     {
-        switch (mode)
+        if (isPlaying)
         {
-            case GameController.Mode.Normal:
-                score = Time.time - startTime;
-                timerText.text = FloatTimeToNiceString(score);
-                if (disappearCounter == numberToScore) OnGameOver();
-                break;
-            case GameController.Mode.Time:
-                endTime -= (Time.time - startTime);
-                timerText.text = FloatTimeToNiceString(endTime);
-                if (endTime < 0) OnGameOver();
-                break;
-            case GameController.Mode.Water:
-                endTime -= (Time.time - startTime);
-                // TODO - proportionally do the water level calculation
-                timerText.text = FloatTimeToNiceString(endTime);
-                if (endTime < 0) OnGameOver();
-                break;
+            switch (mode)
+            {
+                case GameController.Mode.Normal:
+                    score = Time.time - startTime;
+                    timerText.text = FloatTimeToNiceString(score);
+                    if (disappearCounter == numberToScore) OnGameOver();
+                    break;
+                case GameController.Mode.Time:
+                    endTime -= (Time.time - startTime);
+                    timerText.text = FloatTimeToNiceString(endTime);
+                    if (endTime < 0) OnGameOver();
+                    break;
+                case GameController.Mode.Water:
+                    endTime -= (Time.time - startTime);
+                    // TODO - proportionally do the water level calculation
+                    timerText.text = FloatTimeToNiceString(endTime);
+                    if (endTime < 0) OnGameOver();
+                    break;
+            }
         }
     }
 
