@@ -601,8 +601,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 618574814}
-  - component: {fileID: 618574815}
   - component: {fileID: 618574817}
+  - component: {fileID: 618574815}
+  - component: {fileID: 618574818}
+  - component: {fileID: 618574819}
   - component: {fileID: 618574816}
   m_Layer: 0
   m_Name: SceneManager
@@ -635,33 +637,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6f85d5bef82f54c80a7ecfc175e0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backButton: {fileID: 748075376}
-  timerText: {fileID: 2134511655}
-  scoreText: {fileID: 2031188424}
-  countdownText: {fileID: 343283148}
-  leftPushButton: {fileID: 486788130}
-  rightPushButton: {fileID: 1464484526}
-  leftPushSlider: {fileID: 0}
-  rightPushSlider: {fileID: 0}
+  playUi: {fileID: 0}
+  modeController: {fileID: 0}
   leftPusher: {fileID: 1579569729}
   rightPusher: {fileID: 1320628310}
-  spawnPositions:
-  - {fileID: 969088709}
-  - {fileID: 745667871}
-  - {fileID: 2104882609}
-  - {fileID: 1674202958}
-  - {fileID: 1852799238}
-  - {fileID: 1194124450}
-  - {fileID: 2110721850}
-  - {fileID: 156667968}
-  - {fileID: 540718953}
-  - {fileID: 875683101}
-  countFrom: 5
-  disappearTimer: 2
-  numberToScore: 10
-  endTime: 60
-  timeBonus: 3
-  loopBehavior: {fileID: 11400000, guid: 079492afdb41b7842b377b68cc75048a, type: 2}
+  countdownTime: 3
 --- !u!114 &618574816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,6 +656,12 @@ MonoBehaviour:
   activeSensors: 0
   gravity: {x: 0, y: 0, z: 0}
   gravityMagnitude: 5
+  randRange: 0.1
+  dataHolder: {fileID: 11400000, guid: b6dd7f55de76775459e70fba715549cc, type: 2}
+  gravityBodies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &618574817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +673,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951a12ab6c0f5ed40aca8fca9e71b66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &618574818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 618574813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c601f74b33ea1488e5b73c9901cdec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 748075376}
+  timerText: {fileID: 2134511655}
+  scoreText: {fileID: 2031188424}
+  countdownText: {fileID: 343283148}
+  leftPushButton: {fileID: 486788130}
+  rightPushButton: {fileID: 1464484526}
+  leftPushSlider: {fileID: 0}
+  rightPushSlider: {fileID: 0}
+--- !u!114 &618574819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 618574813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f06d51317850943a05facb3d0f2294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: {fileID: 0}
+  dataHolder: {fileID: 11400000, guid: b6dd7f55de76775459e70fba715549cc, type: 2}
+  prefab: {fileID: 0}
+  isPlaying: 0
+  scoreValue: 0
+  timerValue: 0
+  startTime: 0
+  disappearCounter: 0
+  leftTime: 0
+  spawnPositions:
+  - {fileID: 969088709}
+  - {fileID: 745667871}
+  - {fileID: 2104882609}
+  - {fileID: 1674202958}
+  - {fileID: 1852799238}
+  - {fileID: 1194124450}
+  - {fileID: 2110721850}
+  - {fileID: 156667968}
+  - {fileID: 540718953}
+  - {fileID: 875683101}
 --- !u!1 &745667870
 GameObject:
   m_ObjectHideFlags: 0

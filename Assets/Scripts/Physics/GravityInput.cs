@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GravityInput : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class GravityInput : MonoBehaviour
     public Sensors activeSensors;
     public Vector3 gravity;
     public float gravityMagnitude = 5f;
+    public float randRange = 0.1f;
+
+    public List<Rigidbody> gravityBodies;
 
     void Awake()
     {
@@ -25,6 +29,8 @@ public class GravityInput : MonoBehaviour
         {
             activeSensors = Sensors.Fusion;
         }
+
+        gravityBodies = new List<Rigidbody>();
     }
 
     private Vector3 tempGravity;
@@ -43,7 +49,20 @@ public class GravityInput : MonoBehaviour
                 break;
         }
 
-        gravity = tempGravity * gravityMagnitude;
-        Physics.gravity = gravity;
+        // For testings (in editor)
+        if (activeSensors != Sensors.None)
+        {
+            gravity = tempGravity * gravityMagnitude;
+        }
+
+        foreach (Rigidbody rb in gravityBodies)
+        {
+            if (rb != null)
+            {
+                // TODO - randomize gravity
+                Vector3 randomizedGravity = gravity;
+                rb.AddForce(randomizedGravity, ForceMode.Acceleration);
+            }
+        }
     }
 }

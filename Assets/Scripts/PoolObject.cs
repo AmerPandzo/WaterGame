@@ -2,7 +2,8 @@
 
 public class PoolObject : MonoBehaviour
 {
-    public LoopBehaviour loopBehaviour;
+    public DataHolder dataHolder;
+    private GravityInput gravityInput;
 
     private float timer;
     private float layerId;
@@ -10,6 +11,7 @@ public class PoolObject : MonoBehaviour
     private void Awake()
     {
         layerId = LayerMask.NameToLayer("Disappear");
+        gravityInput = FindObjectOfType<GravityInput>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -17,17 +19,18 @@ public class PoolObject : MonoBehaviour
         if (other.gameObject.layer == layerId)
         {
             timer += Time.deltaTime;
-            if (timer >= loopBehaviour.disappearTimer)
+            if (timer >= dataHolder.disappearTimer)
             {
                 Destroy();
             }
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == layerId)
         {
-            if (loopBehaviour.OnEntering != null) loopBehaviour.OnEntering();
+            if (dataHolder.OnEntering != null) dataHolder.OnEntering();
             ResetTimer();
         }
     }
@@ -36,7 +39,7 @@ public class PoolObject : MonoBehaviour
     {
         if (other.gameObject.layer == layerId)
         {
-            if (loopBehaviour.OnExiting != null) loopBehaviour.OnExiting();
+            if (dataHolder.OnExiting != null) dataHolder.OnExiting();
         }
     }
 
@@ -47,17 +50,19 @@ public class PoolObject : MonoBehaviour
 
     public virtual void OnObjectReuse()
     {
+        gravityInput.gravityBodies.Add(GetComponent<Rigidbody>());
         ResetTimer();
     }
 
     protected void Destroy()
     {
-        if (loopBehaviour.OnTimerPassed != null)
+        if (dataHolder.OnTimerPassed != null)
         {
-            loopBehaviour.OnTimerPassed();
+            dataHolder.OnTimerPassed();
         }
-        if (loopBehaviour.isDisappearing)
+        if (dataHolder.isDisappearing)
         {
+            gravityInput.gravityBodies.Remove(GetComponent<Rigidbody>());
             gameObject.SetActive(false);
         }
     }

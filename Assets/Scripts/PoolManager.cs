@@ -25,6 +25,11 @@ public class PoolManager : MonoBehaviour
         }
     }
 
+    public ObjectInstance[] GetPool(GameObject prefab)
+    {
+        return poolDictionary[prefab.GetInstanceID()].ToArray();
+    }
+
     public void ReuseObject(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         int poolKey = prefab.GetInstanceID();
