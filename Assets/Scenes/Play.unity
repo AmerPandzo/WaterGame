@@ -656,12 +656,11 @@ MonoBehaviour:
   activeSensors: 0
   gravity: {x: 0, y: 0, z: 0}
   gravityMagnitude: 5
-  randRange: 0.1
-  dataHolder: {fileID: 11400000, guid: b6dd7f55de76775459e70fba715549cc, type: 2}
-  gravityBodies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  randomizerValue: 1
+  lowPassFilterActive: 1
+  accelerometerUpdateInterval: 0.016666668
+  lowPassKernelWidthInSeconds: 1
+  gravityBodies: []
 --- !u!114 &618574817
 MonoBehaviour:
   m_ObjectHideFlags: 0
