@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour
         playManager.playUi.backButton.onClick.AddListener(() => StartLoading("Menu"));
 
         // TODO - set these informations from menu
-        playManager.modeController.SetMode(loopPrefabs[3], 10, modes[0]);
+        playManager.modeController.SetMode(loopPrefabs[3], 10, modes[4]);
     }
 
     private void SetMenuScene()

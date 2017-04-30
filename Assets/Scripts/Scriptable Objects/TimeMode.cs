@@ -5,12 +5,13 @@ using UnityEngine;
 public class TimeMode : Mode
 {
     public Difficulty difficulty = Difficulty.NONE;
-    public float endTime = 60f;
-    public float timeBonus = 10f;
+    public float timerMax = 60f;
+    public float timerBonus = 10f;
+    private float timer;
 
     private void TimeEasyMode_OnTimerPassed()
     {
-        endTime += timeBonus;
+        modeController.endTime += timerBonus;
         modeController.disappearCounter++;
         modeController.Reuse();
     }
@@ -24,9 +25,11 @@ public class TimeMode : Mode
     public override void Init(ModeController modeController)
     {
         this.modeController = modeController;
+        modeController.startTime = Time.time;
+        modeController.endTime = Time.time + timerMax;
+        timer = timerMax;
         modeController.dataHolder.disappearTimer = disappearTimer;
         modeController.dataHolder.isDisappearing = loopsDisappearing;
-        modeController.leftTime = endTime;
 
         if (difficulty == Difficulty.Easy)
         {
@@ -42,9 +45,13 @@ public class TimeMode : Mode
 
     public override void UpdateMode()
     {
+        timer = modeController.endTime - Time.time;
         modeController.scoreValue = modeController.disappearCounter;
-        modeController.leftTime -= (Time.time - modeController.startTime);
-        modeController.timerValue = endTime;
-        if (modeController.leftTime < 0) modeController.OnGameOver();
+        modeController.timerValue = timer;
+        if (timer < 0)
+        {
+            modeController.OnGameOver();
+            modeController.timerValue = 0f;
+        }
     }
 }

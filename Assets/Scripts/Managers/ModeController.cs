@@ -17,7 +17,7 @@ public class ModeController : MonoBehaviour
 
     [Header("Mode state info")]
     public int disappearCounter;
-    public float leftTime;
+    public float endTime;
 
     public Action OnGameStart;
     public Action OnGameOver;

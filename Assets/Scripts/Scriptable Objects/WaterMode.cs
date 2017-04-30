@@ -5,12 +5,13 @@ using UnityEngine;
 public class WaterMode : Mode
 {
     public Difficulty difficulty = Difficulty.NONE;
-    public float endTime = 60f;
-    public float timeBonus = 10f;
+    public float timerMax = 60f;
+    public float timerBonus = 10f;
+    private float timer;
 
     private void WaterModeEasy_OnTimerPassed()
     {
-        modeController.leftTime += timeBonus;
+        modeController.endTime += timerBonus;
         modeController.disappearCounter++;
         modeController.Reuse();
     }
@@ -24,7 +25,9 @@ public class WaterMode : Mode
     public override void Init(ModeController modeController)
     {
         this.modeController = modeController;
-        modeController.leftTime = endTime;
+        modeController.startTime = Time.time;
+        modeController.endTime = Time.time + timerMax;
+        timer = timerMax;
         modeController.dataHolder.disappearTimer = disappearTimer;
         modeController.dataHolder.isDisappearing = loopsDisappearing;
 
@@ -43,10 +46,13 @@ public class WaterMode : Mode
     public override void UpdateMode()
     {
         // TODO - proportionally do the water level calculation
+        timer = modeController.endTime - Time.time;
         modeController.scoreValue = modeController.disappearCounter;
-        modeController.leftTime -= (Time.time - modeController.startTime);
-        modeController.timerValue = modeController.leftTime;
-        if (endTime < 0) modeController.OnGameOver();
+        modeController.timerValue = timer;
+        if (timer < 0)
+        {
+            modeController.OnGameOver();
+            modeController.timerValue = 0f;
+        }
     }
-
 }
